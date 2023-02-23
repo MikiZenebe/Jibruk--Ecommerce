@@ -10,7 +10,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className="">Miki</h1>
+        <h1 className="text-red-800 text-2xl bg-pink-400">Miki</h1>
       </main>
     </div>
   );
