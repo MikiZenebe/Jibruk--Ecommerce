@@ -9,7 +9,7 @@ function Layout({ children }) {
         <title>Jibruk E-Store</title>
       </Head>
 
-      <header>
+      <header className="sticky top-0 z-50">
         <Navbar />
       </header>
 

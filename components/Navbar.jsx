@@ -5,7 +5,7 @@ import Logo from "../assets/logo.png";
 
 function Navbar() {
   return (
-    <div className=" w-full sm:px-20 py-6 px-12 backdrop-blur-sm bg-white/30">
+    <div className=" w-full sm:px-20 py-6 px-10 backdrop-blur-lg bg-white/30">
       <div className=" flex justify-between w-full">
         <div className="flex justify-center items-center gap-2">
           <Image src={Logo} alt="Logo" width={30} height={30} />
