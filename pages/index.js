@@ -12,7 +12,6 @@ export const getServerSideProps = async () => {
 };
 
 export default function Home({ bannerData }) {
-  console.log(bannerData);
   return (
     <>
       <Banner bannerData={bannerData.length && bannerData[0]} />

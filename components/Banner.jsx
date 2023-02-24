@@ -1,6 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from "next/image";
-import Front from "../assets/Front.png";
 import { urlFor } from "../lib/client";
 
 export default function Banner({ bannerData }) {
@@ -23,7 +21,7 @@ export default function Banner({ bannerData }) {
             {bannerData.desc}
           </p>
 
-          <button className="lg:py-3 lg:text-[20px] lg:max-w-[120px] lg:mt-8 mt-6 flex justify-center border-2 rounded-lg bg-black text-white py-1 px-2 max-w-[80px] text-center ">
+          <button className="lg:py-3 lg:text-[20px] lg:max-w-[120px] lg:mt-8 mt-6 flex justify-center border-2 rounded-lg bg-black text-white py-1 px-4 max-w-[80px] text-center ">
             {bannerData.buttonText}
           </button>
         </div>
