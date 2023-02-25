@@ -33,6 +33,8 @@ export default function Home({ bannerData, featuredData }) {
           </div>
         </div>
       </FeatureStyle>
+
+      {/* The Shoes Component */}
     </>
   );
 }

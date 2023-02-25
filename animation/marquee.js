@@ -10,6 +10,7 @@ export const FeatureStyle = styled.div`
     display: flex;
     justify-content: center;
     gap: 22px;
+    width: fit-content;
   }
 
   .track {

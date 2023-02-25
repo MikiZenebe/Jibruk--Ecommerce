@@ -21,7 +21,7 @@ export default function Banner({ bannerData }) {
             {bannerData.desc}
           </p>
 
-          <button className="lg:py-3 lg:text-[20px] lg:max-w-[120px] lg:mt-8 mt-6 flex justify-center border-2 rounded-lg bg-black text-white py-1 px-4 max-w-[80px] text-center ">
+          <button className="expo lg:py-3 lg:text-[20px] lg:max-w-[120px] lg:mt-8 mt-6 flex justify-center border-2 rounded-lg bg-black text-white py-1 px-4 max-w-[80px] text-center ">
             {bannerData.buttonText}
           </button>
         </div>

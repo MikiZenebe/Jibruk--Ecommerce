@@ -33,3 +33,12 @@ a {
 .card:hover {
       transform: scale(1.1, 1.1);
     }
+
+    .expo{
+      transform: scale(1, 1);
+    transition: transform 0.5s ease;
+    }
+
+    .expo:hover {
+      transform: scale(1.1, 1.1);
+    }
