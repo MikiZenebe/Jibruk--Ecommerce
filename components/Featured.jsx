@@ -1,12 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { urlFor } from "../lib/client";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 function Featured({ featured }) {
   //Extract the fields from the props
   const { image, name, price, slug, rowID } = featured;
-  console.log(featured);
 
   return (
     <div>
@@ -14,7 +12,7 @@ function Featured({ featured }) {
         <Link href={`/products/slug`}>
           <div
             style={{ boxShadow: " 0px 70px 73px -33px rgba(0, 0, 0, 0.12)" }}
-            className="bg-white h-[225px] w-[200px] relative rounded-lg mb-20 flex flex-col cursor-pointer"
+            className="card bg-white h-[225px] w-[200px] relative rounded-lg mb-20 flex flex-col cursor-pointer "
           >
             <img
               src={urlFor(image && image[0])}
