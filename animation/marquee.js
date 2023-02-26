@@ -3,8 +3,10 @@ import styled from "styled-components";
 export const FeatureStyle = styled.div`
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 480px;
   overflow: hidden;
+  background-color: #ededed;
+  margin-top: 3rem;
 
   .container {
     display: flex;
@@ -31,5 +33,19 @@ export const FeatureStyle = styled.div`
         transform: translateX(-50%);
       }
     }
+  }
+`;
+
+export const ShoeStyle = styled.div`
+  position: relative;
+  width: 100%;
+  height: 480px;
+  overflow-x: visible;
+  margin-top: 0rem;
+
+  .container {
+    justify-content: center;
+    gap: 22px;
+    width: fit-content;
   }
 `;

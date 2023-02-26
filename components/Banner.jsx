@@ -14,10 +14,10 @@ export default function Banner({ bannerData }) {
         </div>
 
         <div className="md:flex md:flex-col ">
-          <h1 className="text-3xl font-bold mt-10 lg:text-[3rem]">
+          <h1 className="text-3xl font-bold mt-10 lg:text-[3rem] text-gray-700">
             {bannerData.slogan}
           </h1>
-          <p className="mt-4 md:flex-wrap md:max-w-xl lg:text-2xl lg:mt-8 lg:font-normal">
+          <p className="mt-4 md:flex-wrap md:max-w-xl lg:text-2xl lg:mt-8 lg:font-normal text-gray-700">
             {bannerData.desc}
           </p>
 
