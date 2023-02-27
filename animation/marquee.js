@@ -39,13 +39,7 @@ export const FeatureStyle = styled.div`
 export const ShoeStyle = styled.div`
   position: relative;
   width: 100%;
-  height: 480px;
+  height: 1000px;
   overflow-x: visible;
   margin-top: 0rem;
-
-  .container {
-    justify-content: center;
-    gap: 22px;
-    width: fit-content;
-  }
 `;

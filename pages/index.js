@@ -43,7 +43,7 @@ export default function Home({ bannerData, featuredData, shoesData }) {
 
       {/* The Shoes Component */}
       <ShoeStyle>
-        <div className="mt-14 flex flex-col">
+        <div className="mt-20 flex flex-col">
           <h1 className="mt-4 md:mt-14 px-14 md:px-[90px] text-3xl font-bold text-center text-gray-700">
             Shoes
           </h1>

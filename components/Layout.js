@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import { Navbar } from "../components/index";
+import { Navbar, Footer } from "../components/index";
 
 function Layout({ children }) {
   return (
@@ -14,6 +14,10 @@ function Layout({ children }) {
       </header>
 
       <main>{children}</main>
+
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }
