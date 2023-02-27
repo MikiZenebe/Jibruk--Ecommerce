@@ -5,7 +5,7 @@ import { urlFor } from "../lib/client";
 function Shoes({ shoes }) {
   //Extract the fields from the props
   const { image, name, price } = shoes;
-  console.log(shoes);
+
   return (
     <div>
       <div>
