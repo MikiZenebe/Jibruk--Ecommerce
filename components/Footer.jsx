@@ -13,19 +13,26 @@ export default function Footer() {
           </h1>
         </div>
 
-        {/* <div className="flex gap-4 text-gray-600">
+        <div className="flex gap-4 text-gray-600">
           <Link href={"https://github.com/MikiZenebe"}>
-            <FaGithub className="card cursor-pointer" />
+            <p>
+              <FaGithub className="card cursor-pointer" />
+            </p>
           </Link>
 
           <Link href={"https://t.me/Miki_Zenebe"}>
-            <FaTelegram className="card cursor-pointer" />
+            <p>
+              {" "}
+              <FaTelegram className="card cursor-pointer" />
+            </p>
           </Link>
 
           <Link href={"https://www.instagram.com/micky_zenebe/"}>
-            <FaInstagram className="card cursor-pointer" />
+            <p>
+              <FaInstagram className="card cursor-pointer" />
+            </p>
           </Link>
-        </div> */}
+        </div>
       </div>
     </div>
   );

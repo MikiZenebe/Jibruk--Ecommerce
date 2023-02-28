@@ -4,12 +4,12 @@ import { urlFor } from "../lib/client";
 
 function Shoes({ shoes }) {
   //Extract the fields from the props
-  const { image, name, price } = shoes;
+  const { image, name, price, slug } = shoes;
 
   return (
     <div>
       <div>
-        <Link href={`/products/slug`}>
+        <Link href={`/product/${slug.current}`}>
           <div
             style={{ boxShadow: " 0px 70px 73px -33px rgba(0, 0, 0, 0.12)" }}
             className="card bg-white h-[190px] w-[150px] sm:h-[190px] sm:w-[200px] relative rounded-lg mb-18 flex flex-col cursor-pointer mt-4"

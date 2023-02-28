@@ -15,9 +15,9 @@ function Layout({ children }) {
 
       <main>{children}</main>
 
-      <footer>
+      {/* <footer className="fixed bottom-0 z-50 w-full">
         <Footer />
-      </footer>
+      </footer> */}
     </div>
   );
 }
