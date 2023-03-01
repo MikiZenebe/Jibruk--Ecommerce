@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Link from "next/link";
+
 import { Navbar, Footer } from "../components/index";
 
 function Layout({ children }) {

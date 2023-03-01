@@ -4,6 +4,7 @@ import Image from "next/image";
 import Logo from "../assets/logo.png";
 import Link from "next/link";
 import { useStateContext } from "../context/StateContext";
+import { Cart } from "./";
 
 function Navbar() {
   const { showCart, setShowCart, totalQty } = useStateContext();
@@ -18,9 +19,11 @@ function Navbar() {
         </h1>
         <div className="flex items-center justify-center gap-8 ">
           <FaUser />
-          {/* margin-left: 3rem; position: relative; display: flex; flex-direction:
-          column; align-items: center; */}
-          <div className="relative flex flex-col items-center">
+
+          <div
+            className="relative flex flex-col items-center cursor-pointer"
+            onClick={() => setShowCart(true)}
+          >
             {totalQty > 0 && (
               <span className="bg-[#d35050] w-4 h-4 flex justify-center items-center rounded-[50%] text-white text-[0.80rem] absolute right-[-60%] top-[-58%] pointer-events-none">
                 {totalQty}
@@ -28,6 +31,8 @@ function Navbar() {
             )}
             <FaShoppingCart />
           </div>
+
+          {showCart && <Cart />}
         </div>
       </div>
     </div>
