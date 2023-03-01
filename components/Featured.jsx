@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from "next/link";
 import { urlFor } from "../lib/client";
 
 function Featured({ featured }) {

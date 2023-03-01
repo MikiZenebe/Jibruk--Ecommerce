@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { client, urlFor } from "../../lib/client";
-import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
-import { Featured } from "../../components";
-import { useState } from "react";
+import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
+import { useStateContext } from "../../context/StateContext";
+import { toast } from "react-hot-toast";
 
 //Fetch the Data
 //{slug} means access everything in that slug
@@ -40,9 +40,10 @@ export const getStaticPaths = async () => {
   };
 };
 
-const ProductDetail = ({ detail, featuredData }) => {
-  const { image, name, details, price } = detail;
-  console.log(detail);
+const ProductDetail = ({ detail }) => {
+  const { image, name, details } = detail;
+  const { qty, incQty, decQty, cartAdd } = useStateContext();
+
   return (
     <div>
       <div className=" flex flex-col  items-center justify-between pt-10  sm:flex-row sm:px-8 md:px-24 lg:px-28 lg:mb-96">
@@ -66,19 +67,19 @@ const ProductDetail = ({ detail, featuredData }) => {
           <div className="pt-3 flex gap-4">
             <span>Quantitiy</span>
 
-            <button>
-              <AiFillMinusCircle />
+            <button className="card">
+              <AiOutlineMinusCircle onClick={decQty} />
             </button>
-            <p>5</p>
-            <button>
-              <AiFillPlusCircle />
+            <p className="font-semibold">{qty}</p>
+            <button className="card ">
+              <AiOutlinePlusCircle onClick={incQty} />
             </button>
           </div>
 
           <div className="pt-8">
             {" "}
             <button className="card bg-black text-white justify-center items-center text-center px-8 w-full py-2 rounded-md">
-              Purchase
+              Add to Cart
             </button>
           </div>
         </div>
