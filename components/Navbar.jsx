@@ -4,7 +4,7 @@ import Image from "next/image";
 import Logo from "../assets/logo.png";
 import Link from "next/link";
 import { useStateContext } from "../context/StateContext";
-import { Cart } from "./";
+import { Cart } from "./index";
 
 function Navbar() {
   const { showCart, setShowCart, totalQty } = useStateContext();
