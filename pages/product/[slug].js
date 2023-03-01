@@ -10,11 +10,11 @@ export const getStaticProps = async ({ params: { slug } }) => {
   const Detailquery = `*[_type == "shoes" && slug.current == '${slug}'][0]`;
   const featuredQuery = '*[_type == "featured"]';
 
-  const detail = await client.fetch(Detailquery);
+  const product = await client.fetch(Detailquery);
   const featuredData = await client.fetch(featuredQuery);
 
   return {
-    props: { detail, featuredData },
+    props: { product, featuredData },
   };
 };
 
@@ -27,10 +27,10 @@ export const getStaticPaths = async () => {
     }
   }`;
 
-  const details = await client.fetch(query);
-  const paths = details.map((detail) => ({
+  const products = await client.fetch(query);
+  const paths = products.map((product) => ({
     params: {
-      slug: detail.slug.current,
+      slug: product.slug.current,
     },
   }));
 
@@ -40,9 +40,14 @@ export const getStaticPaths = async () => {
   };
 };
 
-const ProductDetail = ({ detail }) => {
-  const { image, name, details } = detail;
+const ProductDetail = ({ product }) => {
+  const { image, name, details } = product;
   const { qty, incQty, decQty, cartAdd } = useStateContext();
+
+  //Create Notify Toast
+  const notify = () => {
+    toast.success(`${qty} ${name} added to your cart`);
+  };
 
   return (
     <div>
@@ -78,7 +83,12 @@ const ProductDetail = ({ detail }) => {
 
           <div className="pt-8">
             {" "}
-            <button className="card bg-black text-white justify-center items-center text-center px-8 w-full py-2 rounded-md">
+            <button
+              className="card bg-black text-white justify-center items-center text-center px-8 w-full py-2 rounded-md"
+              onClick={() => {
+                cartAdd(product, qty), notify();
+              }}
+            >
               Add to Cart
             </button>
           </div>
