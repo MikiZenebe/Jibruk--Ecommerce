@@ -42,7 +42,7 @@ export const getStaticPaths = async () => {
 
 const ProductDetail = ({ product }) => {
   const { image, name, details } = product;
-  const { qty, incQty, decQty, cartAdd } = useStateContext();
+  const { qty, incQty, decQty, cartAdd, isLoading } = useStateContext();
 
   //Create Notify Toast
   const notify = () => {

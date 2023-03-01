@@ -4,6 +4,7 @@ const ShopContext = createContext();
 
 export const StateContext = ({ children }) => {
   //Add our data for the state
+  const [isLoading, setIsLoading] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [showCart, setShowCart] = useState(false);
   const [qty, setQty] = useState(1);
