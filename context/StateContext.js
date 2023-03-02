@@ -11,12 +11,12 @@ export const StateContext = ({ children }) => {
   const [totalQty, setTotalQty] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  //Increase Product Quantitiy
+  //Increase Quantity
   const incQty = () => {
     setQty((prevQty) => prevQty + 1);
   };
 
-  //Decrease Product Quantitiy
+  //Decrease Quantity
   const decQty = () => {
     setQty((prevQty) => {
       if (prevQty - 1 < 1) return 1; //stop on 1 If it trys to go lessthan 1
@@ -24,30 +24,51 @@ export const StateContext = ({ children }) => {
     });
   };
 
-  //Add Product To Cart
-  const cartAdd = (product, quantitiy) => {
+  //Add product to cart
+  const cartAdd = (product, quantity) => {
     //Check if the product is in cart
     const exist = cartItems.find((item) => item.slug === product.slug);
-
     if (exist) {
       setCartItems(
         cartItems.map((item) =>
           item.slug === product.slug
-            ? { ...exist, quantitiy: exist.quantitiy + quantitiy }
+            ? { ...exist, quantity: exist.quantity + quantity }
             : item
         )
       );
     } else {
-      setCartItems([...cartItems, { ...product, quantitiy: quantitiy }]);
+      setCartItems([...cartItems, { ...product, quantity: quantity }]);
     }
 
     //Total Price
-    setTotalPrice(
-      (prevTotalPrice) => prevTotalPrice + product.price * quantitiy
-    );
+    setTotalPrice((prevTotal) => prevTotal + product.price * quantity);
 
     //Increase total quantity
-    setTotalQty((prevTotalQty) => prevTotalQty + quantitiy); //Display on the cart icon
+    setTotalQty((prevTotal) => prevTotal + quantity); //Display on the cart icon
+  };
+
+  //Remove Product
+  const onRemove = (product) => {
+    //Check if the product is already in the cart
+    const exist = cartItems.find((item) => item.slug === product.slug);
+
+    if (exist.quantity === 1) {
+      setCartItems(cartItems.filter((item) => item.slug !== product.slug));
+    } else {
+      setCartItems(
+        cartItems.map((item) =>
+          item.slug === product.slug
+            ? { ...exist, quantity: exist.quantity - 1 }
+            : item
+        )
+      );
+    }
+
+    //Total Price
+    setTotalPrice((prevTotal) => prevTotal - product.price);
+
+    //Decrease total quantitiy
+    setTotalQty((prevTotal) => prevTotal - 1); //Display on the cart icon
   };
 
   return (
@@ -60,6 +81,7 @@ export const StateContext = ({ children }) => {
         showCart,
         setShowCart,
         cartAdd,
+        onRemove,
         totalQty,
         totalPrice,
       }}

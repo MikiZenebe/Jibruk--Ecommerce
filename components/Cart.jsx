@@ -13,14 +13,19 @@ import Link from "next/link";
 
 function Cart() {
   const cartRef = useRef();
-  const { totalPrice, totalQty, cartItems, setShowCart, cartAdd } =
-    useStateContext();
+  const {
+    totalPrice,
+    totalQty,
+    cartItems,
+    setShowCart,
+    cartAdd,
+    onRemove,
+    onRemoveCard,
+    qty,
+  } = useStateContext();
 
   return (
-    <div
-      ref={cartRef}
-      className="bg-[#00000066] w-full h-[100vh] fixed right-0 top-0 z-[100] flex justify-end"
-    >
+    <div className="bg-[#00000066] w-full h-[100vh] fixed right-0 top-0 z-[100] flex justify-end">
       <div className="bg-[#F1F2F6] w-[350px] overflow-y-scroll relative">
         <div className="pt-5 pl-4 flex items-center gap-2">
           <AiOutlineLeft cursor="pointer" onClick={() => setShowCart(false)} />
@@ -53,7 +58,7 @@ function Cart() {
                   className="flex justify-center items-center mt-10 ml-6 h-[130px]  gap-9 bg-white w-[300px]  rounded-lg relative"
                 >
                   <div className="absolute right-2 top-2 hover:text-red-500 cursor-pointer card">
-                    <AiOutlineDelete />
+                    <AiOutlineDelete onClick={() => onRemoveCard(item)} />
                   </div>
                   <img
                     className="card w-[60px] relative"
@@ -68,11 +73,11 @@ function Cart() {
                     <div className="mt-2 flex items-center gap-3 text-black">
                       <p className="font-semibold ">Quantity</p>
 
-                      <span>
-                        <AiOutlineMinusCircle />
+                      <span className="cursor-pointer">
+                        <AiOutlineMinusCircle onClick={() => onRemove(item)} />
                       </span>
 
-                      <span>{totalQty}</span>
+                      <span>{item.quantity}</span>
 
                       <span className="cursor-pointer">
                         <AiOutlinePlusCircle onClick={() => cartAdd(item, 1)} />
