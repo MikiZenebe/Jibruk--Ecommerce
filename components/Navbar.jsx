@@ -5,6 +5,7 @@ import Logo from "../assets/logo.png";
 import Link from "next/link";
 import { useStateContext } from "../context/StateContext";
 import { Cart } from "./index";
+const { AnimatePresence, motion } = require("framer-motion");
 
 function Navbar() {
   const { showCart, setShowCart, totalQty } = useStateContext();
@@ -25,14 +26,18 @@ function Navbar() {
             onClick={() => setShowCart(true)}
           >
             {totalQty > 0 && (
-              <span className="bg-[#d35050] w-4 h-4 flex justify-center items-center rounded-[50%] text-white text-[0.80rem] absolute right-[-60%] top-[-58%] pointer-events-none">
+              <motion.span
+                animate={{ scale: 1 }}
+                initial={{ scale: 0 }}
+                className="bg-[#d35050] w-4 h-4 flex justify-center items-center rounded-[50%] text-white text-[0.80rem] absolute right-[-60%] top-[-58%] pointer-events-none"
+              >
                 {totalQty}
-              </span>
+              </motion.span>
             )}
             <FaShoppingCart />
           </div>
 
-          {showCart && <Cart />}
+          <AnimatePresence>{showCart && <Cart />}</AnimatePresence>
         </div>
       </div>
     </div>

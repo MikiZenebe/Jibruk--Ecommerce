@@ -3,6 +3,8 @@ import { client, urlFor } from "../../lib/client";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import { useStateContext } from "../../context/StateContext";
 import { toast } from "react-hot-toast";
+import { motion } from "framer-motion";
+import { card } from "../../animation/CartAnimation";
 
 //Fetch the Data
 //{slug} means access everything in that slug
@@ -51,7 +53,12 @@ const ProductDetail = ({ product }) => {
 
   return (
     <div>
-      <div className=" flex flex-col  items-center justify-between pt-10  sm:flex-row sm:px-8 md:px-24 lg:px-28 lg:mb-96">
+      <motion.div
+        variants={card}
+        animate="show"
+        initial="hidden"
+        className=" flex flex-col  items-center justify-between pt-10  sm:flex-row sm:px-8 md:px-24 lg:px-28 lg:mb-96"
+      >
         <div
           style={{ boxShadow: " 0px 70px 73px -33px rgba(0, 0, 0, 0.12)" }}
           className="card bg-white h-[220px] w-[220px] sm:h-[230px] sm:w-[230px] lg:h-[260px] lg:w-[260px] lg:p-2 relative rounded-lg   cursor-pointer mt-4"
@@ -93,7 +100,7 @@ const ProductDetail = ({ product }) => {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
