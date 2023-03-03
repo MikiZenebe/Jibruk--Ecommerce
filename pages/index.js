@@ -14,6 +14,10 @@ export const getServerSideProps = async () => {
   const shoesQuery = '*[_type == "shoes"]';
   const shoesData = await client.fetch(shoesQuery);
 
+  await new Promise((resolve) => {
+    setTimeout(resolve, 1000);
+  });
+
   return {
     props: { bannerData, featuredData, shoesData },
   };

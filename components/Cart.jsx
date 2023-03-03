@@ -5,14 +5,14 @@ import {
   AiOutlinePlusCircle,
   AiOutlineDelete,
   AiOutlineLeft,
-  AiOutlineShoppingCart,
 } from "react-icons/ai";
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { wrapper, empty, cards, card } from "../animation/CartAnimation";
 
 function Cart() {
-  const cartRef = useRef();
   const {
     totalPrice,
     totalQty,
@@ -25,8 +25,20 @@ function Cart() {
   } = useStateContext();
 
   return (
-    <div className="bg-[#00000066] w-full h-[100vh] fixed right-0 top-0 z-[100] flex justify-end">
-      <div className="bg-[#F1F2F6] w-[350px] overflow-y-scroll relative">
+    <motion.div
+      variants={wrapper}
+      animate="show"
+      initial="hidden"
+      exit={{ type: "tween" }}
+      className="bg-[#00000066] w-full h-[100vh] fixed right-0 top-0 z-[100] flex justify-end "
+    >
+      <motion.div
+        initial={{ x: "50%" }}
+        animate={{ x: "0%" }}
+        transition={{ type: "tween" }}
+        exit={{ x: "50%" }}
+        className="bg-[#F1F2F6] w-[350px] overflow-y-scroll relative"
+      >
         <div className="pt-5 pl-4 flex items-center gap-2">
           <AiOutlineLeft cursor="pointer" onClick={() => setShowCart(false)} />
           <span className="font-semibold">Your Cart</span>
@@ -34,7 +46,12 @@ function Cart() {
         </div>
 
         {cartItems.length < 1 && (
-          <div className="flex flex-col justify-center items-center h-[70vh]">
+          <motion.div
+            variants={empty}
+            animate="show"
+            initial="hidden"
+            className="flex flex-col justify-center items-center h-[70vh]"
+          >
             <h1 className="text-2xl font-bold">Nothing in your cart 😔</h1>
             <Link href={`/`}>
               <button
@@ -44,13 +61,13 @@ function Cart() {
                 Go to Shopping
               </button>
             </Link>
-          </div>
+          </motion.div>
         )}
 
-        <div>
+        <motion.div layout variants={card} animate="show" initial="hidden">
           {cartItems.length >= 1 &&
             cartItems.map((item) => (
-              <div key={item._id}>
+              <div layout key={item._id}>
                 <div
                   style={{
                     boxShadow: " 0px 70px 73px -33px rgba(0, 0, 0, 0.062)",
@@ -70,7 +87,7 @@ function Cart() {
                     <h5 className="font-bold text-[14px]">{item.name}</h5>
                     <h5 className="font-semibold">${item.price}</h5>
 
-                    <div className="mt-2 flex items-center gap-3 text-black">
+                    <div className="mt-4 flex items-center gap-3 text-black text-[14px]">
                       <p className="font-semibold ">Quantity</p>
 
                       <span className="cursor-pointer">
@@ -87,9 +104,9 @@ function Cart() {
                 </div>
               </div>
             ))}
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 }
 

@@ -71,6 +71,18 @@ export const StateContext = ({ children }) => {
     setTotalQty((prevTotal) => prevTotal - 1); //Display on the cart icon
   };
 
+  //Remove item card
+  const onRemoveCard = (product) => {
+    const foundProduct = cartItems.find((item) => item._id === product._id);
+    const newCartItems = cartItems.filter((item) => item._id !== product._id);
+
+    setTotalPrice(
+      (prevTotal) => prevTotal - foundProduct.price * foundProduct.quantity
+    );
+    setTotalQty((prevTotal) => prevTotal - foundProduct.quantity);
+    setCartItems(newCartItems);
+  };
+
   return (
     <ShopContext.Provider
       value={{
@@ -82,6 +94,7 @@ export const StateContext = ({ children }) => {
         setShowCart,
         cartAdd,
         onRemove,
+        onRemoveCard,
         totalQty,
         totalPrice,
       }}
