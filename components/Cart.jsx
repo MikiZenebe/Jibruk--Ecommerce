@@ -105,6 +105,17 @@ function Cart() {
               </div>
             ))}
         </motion.div>
+        {cartItems.length >= 1 && (
+          <div className="bg-[#F1F2F6] flex flex-col sticky bottom-0 pb-5 gap-4">
+            <div className="flex justify-between mt-4 px-4 font-semibold">
+              <span>Subtotal:</span>
+              <span className="justify-end">${totalPrice}</span>
+            </div>
+            <button className="bg-black w-[150px] ml-24 py-1  text-white font-bold rounded-md card">
+              Purchase
+            </button>
+          </div>
+        )}
       </motion.div>
     </motion.div>
   );

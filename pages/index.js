@@ -2,6 +2,8 @@ import { FeatureStyle, ShoeStyle } from "../animation/marquee";
 import { Banner, Featured } from "../components";
 import Shoes from "../components/Shoes";
 import { client } from "../lib/client";
+import { cardAnim, pageAnimation } from "../animation/CartAnimation";
+import { motion } from "framer-motion";
 
 //Fetch the Data
 export const getServerSideProps = async () => {
@@ -25,29 +27,36 @@ export const getServerSideProps = async () => {
 
 export default function Home({ bannerData, featuredData, shoesData }) {
   return (
-    <>
+    <motion.div variants={pageAnimation} initial="hidden" animate="show">
       <Banner bannerData={bannerData.length && bannerData[0]} />
 
       {/* The Featured Component */}
-      <FeatureStyle>
-        <h1 className="mt-4 md:mt-14 px-14 md:px-[90px] text-3xl font-bold text-center text-gray-700">
-          Featured
-        </h1>
-        <p className="text-center mt-2 text-gray-700">
-          The Collection of Fashion
-        </p>
-        <div className="marquee">
-          <div className="container track px-14 md:px-[90px] mt-16 md:mt-20 ">
-            {featuredData?.map((featured) => (
-              <Featured key={featured._id} featured={featured} />
-            ))}
+      <motion.div variants={cardAnim} initial="hidden" animate="show">
+        <FeatureStyle>
+          <h1 className="mt-4 md:mt-14 px-14 md:px-[90px] text-3xl font-bold text-center text-gray-700">
+            Featured
+          </h1>
+          <p className="text-center mt-2 text-gray-700">
+            The Collection of Fashion
+          </p>
+          <div className="marquee">
+            <div className="container track px-14 md:px-[90px] mt-16 md:mt-20 ">
+              {featuredData?.map((featured) => (
+                <Featured key={featured._id} featured={featured} />
+              ))}
+            </div>
           </div>
-        </div>
-      </FeatureStyle>
+        </FeatureStyle>
+      </motion.div>
 
       {/* The Shoes Component */}
       <ShoeStyle>
-        <div className="mt-20 flex flex-col">
+        <motion.div
+          variants={cardAnim}
+          initial="hidden"
+          animate="show"
+          className="mt-20 flex flex-col"
+        >
           <h1 className="mt-4 md:mt-14 px-14 md:px-[90px] text-3xl font-bold text-center text-gray-700">
             Shoes
           </h1>
@@ -61,8 +70,8 @@ export default function Home({ bannerData, featuredData, shoesData }) {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </ShoeStyle>
-    </>
+    </motion.div>
   );
 }
