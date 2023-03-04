@@ -19,7 +19,7 @@ function Navbar() {
           </div>
         </h1>
         <div className="flex items-center justify-center gap-8 ">
-          <FaUser />
+          <FaUser className="hover:text-gray-600 card" />
 
           <div
             className="relative flex flex-col items-center cursor-pointer"
@@ -34,7 +34,7 @@ function Navbar() {
                 {totalQty}
               </motion.span>
             )}
-            <FaShoppingCart />
+            <FaShoppingCart className="hover:text-gray-600 card" />
           </div>
 
           <AnimatePresence>{showCart && <Cart />}</AnimatePresence>
