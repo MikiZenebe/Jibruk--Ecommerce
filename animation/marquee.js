@@ -16,7 +16,7 @@ export const FeatureStyle = styled.div`
     width: fit-content;
   }
 
-  /* .track {
+  .track {
     position: absolute;
     white-space: nowrap;
     will-change: transform;
@@ -34,7 +34,7 @@ export const FeatureStyle = styled.div`
         transform: translateX(-50%);
       }
     }
-  } */
+  }
 `;
 
 export const ShoeStyle = styled.div`
