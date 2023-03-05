@@ -9,18 +9,19 @@ export const FeatureStyle = styled.div`
   margin-top: 3rem;
 
   .container {
+    margin-left: 65px;
     display: flex;
     justify-content: center;
     gap: 22px;
     width: fit-content;
   }
 
-  .track {
+  /* .track {
     position: absolute;
     white-space: nowrap;
     will-change: transform;
     animation: marquee 8s linear infinite;
-    width: 180%;
+    width: 200%;
 
     &:hover {
       animation-play-state: paused;
@@ -33,7 +34,7 @@ export const FeatureStyle = styled.div`
         transform: translateX(-50%);
       }
     }
-  }
+  } */
 `;
 
 export const ShoeStyle = styled.div`
