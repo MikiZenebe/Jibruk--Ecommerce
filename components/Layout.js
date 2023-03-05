@@ -15,7 +15,7 @@ function Layout({ children }) {
 
       <main>{children}</main>
 
-      <footer className="mt-auto bottom-0 z-50 w-full">
+      <footer className="mt-auto sm:bottom-0 bottom-0 z-50 w-full">
         <Footer />
       </footer>
     </div>

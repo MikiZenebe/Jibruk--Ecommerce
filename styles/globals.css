@@ -91,3 +91,17 @@ a {
   from {transform: rotate(0deg);}
   to {transform: rotate(359deg);}
 }
+
+
+
+/*Detail More Image*/
+.small-image {
+    border-radius: 8px;
+    background-color: #ffffff;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+  }
+  .selected-image {
+    background-color: #6b6a6a;
+  }

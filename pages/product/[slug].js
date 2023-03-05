@@ -5,6 +5,7 @@ import { useStateContext } from "../../context/StateContext";
 import { toast } from "react-hot-toast";
 import { motion } from "framer-motion";
 import { card } from "../../animation/CartAnimation";
+import { useState } from "react";
 
 //Fetch the Data
 //{slug} means access everything in that slug
@@ -44,7 +45,10 @@ export const getStaticPaths = async () => {
 
 const ProductDetail = ({ product }) => {
   const { image, name, details } = product;
-  const { qty, incQty, decQty, cartAdd, isLoading } = useStateContext();
+  const { qty, incQty, decQty, cartAdd } = useStateContext();
+
+  //To change image with mouse hover and state for small images
+  const [index, setIndex] = useState(0);
 
   //Create Notify Toast
   const notify = () => {
@@ -61,16 +65,30 @@ const ProductDetail = ({ product }) => {
       >
         <div
           style={{ boxShadow: " 0px 70px 73px -33px rgba(0, 0, 0, 0.12)" }}
-          className="card bg-white h-[220px] w-[220px] sm:h-[230px] sm:w-[230px] lg:h-[260px] lg:w-[260px] lg:p-2 relative rounded-lg   cursor-pointer mt-4"
+          className=" bg-white h-[220px] w-[220px] sm:h-[230px] sm:w-[230px] lg:h-[260px] lg:w-[260px] lg:p-2 relative rounded-lg   cursor-pointer mt-4"
         >
           <img
             className="w-[160px] lg:w-[180px] justify-center items-center ml-6 mt-8 sm:ml-8 sm:mt-10"
-            src={urlFor(image && image[0])}
+            src={urlFor(image && image[index])}
             alt=""
           />
+
+          <div className="flex gap-[10px] mt-14 md:mt-14">
+            {image?.map((item, id) => (
+              <img
+                className={
+                  id === index ? "small-image selected-image" : "small-image"
+                }
+                key={id}
+                src={urlFor(item)}
+                alt=""
+                onMouseEnter={() => setIndex(id)}
+              />
+            ))}
+          </div>
         </div>
 
-        <div className="w-[300px] pt-10 h-[600px] sm:h-full lg:w-[390px] lg:h-[350px] ">
+        <div className="w-[300px] pt-32 sm:pt-10 h-[600px] sm:h-full lg:w-[390px] lg:h-[350px] ">
           <h1 className="font-bold text-gray-700 text-[20px] text-center sm:text-left ">
             {name}
           </h1>
