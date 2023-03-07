@@ -10,7 +10,9 @@ import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { wrapper, empty, cards, card } from "../animation/CartAnimation";
+import { wrapper, empty, card } from "../animation/CartAnimation";
+import getStripe from "../lib/getStripe";
+import toast from "react-hot-toast";
 
 function Cart() {
   const {
@@ -23,6 +25,20 @@ function Cart() {
     onRemoveCard,
     qty,
   } = useStateContext();
+
+  //Payment -- Fetch from getStripe file
+  const handleCheckout = async () => {
+    const stripe = await getStripe();
+    const res = await fetch("/api/stripe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(cartItems),
+    });
+
+    const data = await res.json();
+    toast.loading("Redirecting...");
+    await stripe.redirectToCheckout({ sessionId: data.id });
+  };
 
   return (
     <motion.div
@@ -111,7 +127,10 @@ function Cart() {
               <span>Subtotal:</span>
               <span className="justify-end">${totalPrice}</span>
             </div>
-            <button className="bg-black w-[150px] ml-24 py-1  text-white font-bold rounded-md card">
+            <button
+              className="bg-black w-[150px] ml-24 py-1  text-white font-bold rounded-md card"
+              onClick={handleCheckout}
+            >
               Purchase
             </button>
           </div>
