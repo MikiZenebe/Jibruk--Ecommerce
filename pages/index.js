@@ -4,6 +4,7 @@ import Shoes from "../components/Shoes";
 import { client } from "../lib/client";
 import { cardAnim, pageAnimation } from "../animation/CartAnimation";
 import { motion } from "framer-motion";
+import Head from "next/head";
 
 //Fetch the Data
 export const getServerSideProps = async () => {
@@ -28,6 +29,9 @@ export const getServerSideProps = async () => {
 export default function Home({ bannerData, featuredData, shoesData }) {
   return (
     <motion.div variants={pageAnimation} initial="hidden" animate="show">
+      <Head>
+        <meta content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *;**script-src 'self' http://onlineerp.solution.quebec 'unsafe-inline' 'unsafe-eval';** "></meta>
+      </Head>
       <Banner bannerData={bannerData.length && bannerData[0]} />
 
       {/* The Featured Component */}
