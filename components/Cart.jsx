@@ -128,7 +128,7 @@ function Cart() {
               <span className="justify-end">${totalPrice}</span>
             </div>
             <button
-              className="bg-black w-[150px] ml-24 py-1  text-white font-bold rounded-md  focus:bg-gray-700 card"
+              className="bg-black w-[150px] ml-24 py-1  text-white font-bold rounded-md focus:bg-gray-700 card"
               onClick={handleCheckout}
             >
               Purchase
