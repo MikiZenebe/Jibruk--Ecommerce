@@ -33,7 +33,7 @@ function success({ order }) {
 
           <div className="justify-center items-center flex flex-col ">
             <div className="flex gap-1">
-              <p className="font-medium text-gray-700">Customer Email</p> :{" "}
+              <p className="font-medium text-gray-300">Customer Email</p> :{" "}
               <span className="font-normal">
                 {order.customer_details.email}
               </span>
