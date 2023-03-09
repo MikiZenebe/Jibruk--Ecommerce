@@ -5,10 +5,15 @@ import Logo from "../assets/logo.png";
 import Link from "next/link";
 import { useStateContext } from "../context/StateContext";
 import { Cart } from "./index";
+import User from "./User";
 const { AnimatePresence, motion } = require("framer-motion");
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 function Navbar() {
   const { showCart, setShowCart, totalQty } = useStateContext();
+  // const { user } = useUser();
+
+  // console.log(user);
   return (
     <div className=" w-full sm:px-20 py-6 px-10 backdrop-blur-lg bg-white/30">
       <div className=" flex justify-between w-full">
@@ -19,10 +24,10 @@ function Navbar() {
           </div>
         </h1>
         <div className="flex items-center justify-center gap-8 ">
-          <FaUser className="hover:text-gray-600 card" />
+          <User />
 
           <div
-            className="relative flex flex-col items-center cursor-pointer"
+            className="flex flex-col justify-center items-center absolute sm:top-8 sm:right-20 top-8 right-14"
             onClick={() => setShowCart(true)}
           >
             {totalQty > 0 && (
@@ -34,7 +39,8 @@ function Navbar() {
                 {totalQty}
               </motion.span>
             )}
-            <FaShoppingCart className="hover:text-gray-600 card" />
+            <FaShoppingCart className="hover:text-gray-600 card cursor-pointer" />
+            <h3>Cart</h3>
           </div>
 
           <AnimatePresence>{showCart && <Cart />}</AnimatePresence>
