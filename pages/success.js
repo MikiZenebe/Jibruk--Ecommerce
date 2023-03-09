@@ -26,16 +26,16 @@ function success({ order }) {
   const route = useRouter();
   return (
     <div className="h-[100vh] p-6">
-      <div className="px-14 pb-12 bg-transparent flex justify-center items-center h-[100vh]">
+      <div className="sm:px-14 pb-12 bg-transparent flex justify-center items-center h-[100vh]">
         <motion.div
           variants={card}
           animate="show"
           initial="hidden"
           className=" h-[500px] w-[500px] bg-white rounded-2xl"
         >
-          <div className="flex flex-col justify-center items-center p-6">
-            <MdFactCheck size={70} className="text-green-400" />
-            <h1 className="text-[30px] font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-300">
+          <div className="flex flex-col justify-center items-center sm:p-6 pt-2">
+            <MdFactCheck className="text-green-400 text-[60px] sm:text-[65px]" />
+            <h1 className="text-[25px] sm:text-[30px] font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-300 pb-3">
               Payment Successful!
             </h1>
           </div>
@@ -49,7 +49,7 @@ function success({ order }) {
             </div>
 
             <div className="flex justify-center items-center py-4 font-medium text-gray-400">
-              ---------------------------------------------------------
+              -----------------------------------------------------
             </div>
 
             <div className="text-gray-400">
