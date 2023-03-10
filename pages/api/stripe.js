@@ -18,7 +18,7 @@ export default async function handler(req, res) {
         //Shipping
         shipping_options: [
           {
-            shipping_rate: "shr_1Mj4KAD9lu2pa2gdq2fwyOn7",
+            shipping_rate: "shr_1Mk6sSAtrHPZr1eS3oALBRCa",
           },
         ],
 
