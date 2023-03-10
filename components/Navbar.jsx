@@ -7,13 +7,10 @@ import { useStateContext } from "../context/StateContext";
 import { Cart } from "./index";
 import User from "./User";
 const { AnimatePresence, motion } = require("framer-motion");
-import { useUser } from "@auth0/nextjs-auth0/client";
 
 function Navbar() {
   const { showCart, setShowCart, totalQty } = useStateContext();
-  const { user } = useUser();
 
-  console.log(user);
   return (
     <div className=" w-full sm:px-20 py-6 px-10 backdrop-blur-lg bg-white/30">
       <div className=" flex justify-between w-full">
