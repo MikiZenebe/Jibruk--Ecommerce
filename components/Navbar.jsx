@@ -11,9 +11,9 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 
 function Navbar() {
   const { showCart, setShowCart, totalQty } = useStateContext();
-  // const { user } = useUser();
+  const { user } = useUser();
 
-  // console.log(user);
+  console.log(user);
   return (
     <div className=" w-full sm:px-20 py-6 px-10 backdrop-blur-lg bg-white/30">
       <div className=" flex justify-between w-full">
@@ -26,10 +26,7 @@ function Navbar() {
         <div className="flex items-center justify-center gap-8 ">
           <User />
 
-          <div
-            className="flex flex-col justify-center items-center absolute sm:top-8 sm:right-20 top-8 right-14"
-            onClick={() => setShowCart(true)}
-          >
+          <div onClick={() => setShowCart(true)}>
             {totalQty > 0 && (
               <motion.span
                 animate={{ scale: 1 }}
@@ -40,7 +37,6 @@ function Navbar() {
               </motion.span>
             )}
             <FaShoppingCart className="hover:text-gray-600 card cursor-pointer" />
-            <h3>Cart</h3>
           </div>
 
           <AnimatePresence>{showCart && <Cart />}</AnimatePresence>
