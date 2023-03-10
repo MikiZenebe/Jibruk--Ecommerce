@@ -20,7 +20,7 @@ function Navbar() {
             <Link href={`/`}>JIBRUK</Link>
           </div>
         </h1>
-        <div className="flex items-center justify-center gap-8 ">
+        <div className="flex items-center justify-center gap-8 relative">
           <User />
 
           <div onClick={() => setShowCart(true)}>
@@ -28,7 +28,7 @@ function Navbar() {
               <motion.span
                 animate={{ scale: 1 }}
                 initial={{ scale: 0 }}
-                className="bg-[#d35050] w-4 h-4 flex justify-center items-center rounded-[50%] text-white text-[0.80rem] absolute right-[-60%] top-[-58%] pointer-events-none"
+                className="bg-[#d35050] w-4 h-4 flex justify-center items-center rounded-[50%] text-white text-[0.80rem] absolute right-[-16%] top-[-3%] pointer-events-none"
               >
                 {totalQty}
               </motion.span>
